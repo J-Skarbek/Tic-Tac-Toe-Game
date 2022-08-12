@@ -24,7 +24,8 @@ footer, header, hgroup, menu, nav, section {
 	display: block;
 }
 body {
-	line-height: 1;
+    line-height: 1;
+    font-family: 'Poppins', sans-serif;
 }
 ol, ul {
 	list-style: none;
@@ -52,13 +53,18 @@ table {
     --purp-blue: #BFCFFF;
 }
 
-h1,
+h1 {
+    font-weight: 900;
+}
+
 h2,
 h3,
-h4,
+h4 { 
+    font-weight: 800;
+}
+
 h5,
 h6 {
-    font-family: 'Poppins', sans-serif;
     font-weight: 700;
 }
 
@@ -66,11 +72,5 @@ p,
 a,
 span,
 link {
-    font-family: 'Poppins', sans-serif;
     font-weight: 100;
-}
-
-body {
-    display: grid;
-    grid-template-columns: repeat(minmax(50px, 1fr));
 }
