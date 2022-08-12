@@ -78,3 +78,24 @@ span,
 link {
     font-weight: 100;
 }
+
+.header {
+    grid-column: 3 / span 10;
+    grid-row: 1 / span 2;
+}
+
+.sidebar {
+    grid-column: 1 / span 2;
+    grid-row: 1 / span 12;
+}
+
+.page-body {
+    grid-column: 3 / span 10;
+    grid-row: 3 / span 8;
+}
+
+.footer {
+    grid-column: 3 / span 10;
+    grid-row: 11 / span 2;
+}
+
