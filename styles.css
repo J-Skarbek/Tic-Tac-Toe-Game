@@ -29,7 +29,8 @@ body {
     display: grid;
     grid-template-columns: repeat(12, minmax(100px, 1fr));
     grid-template-rows: repeat(12, minmax(100px, 1fr));
-    max-height: 100vh;
+    max-height: 100%;
+    
 }
 ol, ul {
 	list-style: none;
@@ -92,10 +93,27 @@ link {
 .page-body {
     grid-column: 3 / span 10;
     grid-row: 3 / span 8;
+    display: grid;
+    grid-template-columns: repeat(8, minmax(25px, .25fr));
+    grid-template-rows: repeat(8, minmax(25px, .25fr));
+
 }
 
 .footer {
     grid-column: 3 / span 10;
     grid-row: 11 / span 2;
+}
+
+.game-container {
+    grid-column: 1 / span 4;
+    grid-row: 1 / span 4;
+    background-color: var(--extra-lt-blue);
+    display: grid;
+    grid-template-columns: repeat(3, minmax(25px, 1fr));
+    grid-template-rows: repeat(3, minmax(25px, 1fr));
+}
+
+.game-container > div {
+    border: 5px var(--purp-blue) solid;
 }
 
