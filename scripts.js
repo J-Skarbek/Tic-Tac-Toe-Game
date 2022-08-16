@@ -13,18 +13,18 @@ const GameBoard = (function() {
   let tileCounter = 0 
   const gameContainer = document.querySelector('.game-container')
 
-  function createDOMElements(gameGrid) {
+  function createDomElements(gameGrid) {
     gameGrid.forEach(square => {
-      tileCounter++
       const gameSquare = document.createElement('div')
       gameContainer.appendChild(gameSquare)
       gameSquare.classList.add(`game-square-${tileCounter}`)
       console.log(tileCounter)
+      tileCounter++
     })
     console.table(gameGrid)
   }
 
-  return createDOMElements(gameGrid)
+  return createDomElements(gameGrid)
 })();
 
 function theTest() {
