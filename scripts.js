@@ -1,5 +1,5 @@
 const GameBoard = (function() {
-  this.gameGrid = [
+  const gameGrid = [
   '1A',
   '1B',
   '1C',
@@ -9,20 +9,27 @@ const GameBoard = (function() {
   '3A',
   '3B',
   '3C',
-  ];
-  this.tileCounter = 0;
-  this.gameContainer = document.querySelector('.game-container');
+  ]
+  let tileCounter = 0 
+  const gameContainer = document.querySelector('.game-container')
 
-  return this.gameGrid.forEach(square => {
-    this.tileCounter++ 
-    const gameSquare = document.createElement('div')
-    this.gameContainer.appendChild(gameSquare)
-    gameSquare.classList.add(`game-square-${this.tileCounter}`) 
-  });
+  function createDOMElements(gameGrid) {
+    gameGrid.forEach(square => {
+      tileCounter++
+      const gameSquare = document.createElement('div')
+      gameContainer.appendChild(gameSquare)
+      gameSquare.classList.add(`game-square-${tileCounter}`)
+      console.log(tileCounter)
+    })
+    console.table(gameGrid)
+  }
+
+  return createDOMElements(gameGrid)
 })();
 
 function theTest() {
-  console.log(this.tileCounter)
-  console.log(this.gameGrid)
+  console.log(tileCounter)
+  console.log(gameGrid)
   console.log(gameSquare)
+  console.log(gameBoard)
 }
