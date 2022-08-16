@@ -20,3 +20,9 @@ const GameBoard = (function() {
     gameSquare.classList.add(`game-square-${this.tileCounter}`) 
   });
 })();
+
+function theTest() {
+  console.log(this.tileCounter)
+  console.log(this.gameGrid)
+  console.log(gameSquare)
+}
