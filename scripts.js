@@ -1,14 +1,19 @@
 const playerNameInput = Array.from(document.querySelectorAll('.player-input'))
+
 playerNameInput.forEach(player => {
   player.addEventListener('click', () => {
     if (player.classList.contains('player-1')) {
       let player1Name = prompt("What's your name?")
       let player1Preference = prompt("Do you want to be X's or O's?")
-      const player1 = playerFactory(`${player1Name}, ${player1Preference}`)
+      const player1 = playerFactory(`${player1Name}`,`${player1Preference}`)
+      console.log(player1Preference)
+      console.log(player1)      
     } else if (player.classList.contains('player-2')) {
       let player2Name = prompt("What's your name?")
       let player2Preference = prompt("Do you want to be X's or O's?")
-      const player2 = playerFactory(`${player2Name}, ${player2Preference}`)
+      const player2 = playerFactory(`${player2Name}`,`${player2Preference}`)
+      console.log(player2Preference)
+      console.log(player2)
     }
   })
 });
