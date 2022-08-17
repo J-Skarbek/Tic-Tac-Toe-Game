@@ -1,3 +1,18 @@
+const playerNameInput = Array.from(document.querySelectorAll('.player-input'))
+playerNameInput.forEach(player => {
+  player.addEventListener('click', () => {
+    if (player.classList.contains('player-1')) {
+      let player1Name = prompt("What's your name?")
+      let player1Preference = prompt("Do you want to be X's or O's?")
+      const player1 = playerFactory(`${player1Name}, ${player1Preference}`)
+    } else if (player.classList.contains('player-2')) {
+      let player2Name = prompt("What's your name?")
+      let player2Preference = prompt("Do you want to be X's or O's?")
+      const player2 = playerFactory(`${player2Name}, ${player2Preference}`)
+    }
+  })
+});
+
 const GameBoard = (function() {
   const gameGrid = [
   '1A',
@@ -22,14 +37,33 @@ const GameBoard = (function() {
       tileCounter++
     })
     console.table(gameGrid)
+    console.log(typeof gameGrid)
   }
-
   return createDomElements(gameGrid)
 })();
 
 function theTest() {
+  console.log(typeof GameBoard)
   console.log(tileCounter)
   console.log(gameGrid)
   console.log(gameSquare)
   console.log(gameBoard)
 }
+
+function playerFactory(name, preference) {
+  return {
+    name, preference
+  }
+}
+
+// const player1 = playerFactory(`${player1Name}, ${player1Preference}`)
+// const player2 = playerFactory(`${player2Name}, ${player2Preference}`)
+
+function playerTest() {
+  console.log(player1)
+  console.log(typeof player1)
+  console.log(player2)
+  console.log(typeof player2)
+}
+
+
