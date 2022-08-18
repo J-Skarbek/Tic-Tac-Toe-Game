@@ -7,7 +7,7 @@ playerNameInput.forEach(player => {
       let player1Preference = prompt("Do you want to be X's or O's?")
       const player1 = playerFactory(`${player1Name}`,`${player1Preference}`)
       console.log(player1Preference)
-      console.log(player1)      
+      console.log(player1) 
     } else if (player.classList.contains('player-2')) {
       let player2Name = prompt("What's your name?")
       let player2Preference = prompt("Do you want to be X's or O's?")
@@ -44,7 +44,10 @@ const GameBoard = (function() {
     console.table(gameGrid)
     console.log(typeof gameGrid)
   }
-  return createDomElements(gameGrid)
+  const initDomElements = createDomElements(gameGrid)
+  return {
+    initDomElements
+  }
 })();
 
 function theTest() {
@@ -70,5 +73,3 @@ function playerTest() {
   console.log(player2)
   console.log(typeof player2)
 }
-
-
