@@ -121,13 +121,25 @@ link {
 
 /*temp CSS to add gamemarkers to board and add style*/
 
-.game-container div:nth-child(odd) {
+.game-container .empty {
+    background-image: none;
+}
+
+.game-container .played-x {
+    background-image: url("./images/new-xx.svg")
+}
+
+.game-container .played-o {
+    background-image: url("./images/new-o.svg")
+}
+
+/* .game-container div:nth-child(odd) {
     background-image: url("./images/new-xx.svg")
 }
 
 .game-container div:nth-child(even) {
     background-image: url("./images/new-o.svg")
-}
+} */
 
 img.game-element {
     height: 75px;

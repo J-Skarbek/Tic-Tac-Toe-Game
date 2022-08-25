@@ -19,21 +19,33 @@ const GameBoard = (function() {
     gameGrid.forEach(square => {
       const gameSquare = document.createElement('div')
       gameContainer.appendChild(gameSquare)
-      gameSquare.classList.add(`game-square-${tileCounter}`)
+      gameSquare.classList.add(`game-square-${tileCounter}`, 'game-square')
       gameSquare.addEventListener('click', () => {
-        console.log('testing clicks')
+        gameSquare.classList.add('played-o')
       })
       console.log(tileCounter)
       tileCounter++
     })
     console.table(gameGrid)
     console.log(typeof gameGrid)
+
   }
 
+  function resetTheGame() {
+    const resetBtn = document.querySelector('.reset-game')
+    resetBtn.addEventListener('click', () => {
+      Array.from(document.querySelectorAll('.game-square')).forEach((item) => item.classList.remove('played-x', 'played-o'))
+    })
+  }
+
+  const gameReset = resetTheGame()
   const initDomElements = createDomElements(gameGrid)
+  // const handleInputs = handlePlayerInputs(gameGrid)
   return {
     initDomElements,
     gameGrid,
+    gameReset
+    // handleInputs
   }
 })();
 
