@@ -28,20 +28,22 @@ const GameBoard = (function() {
 
   }
 
-  function resetTheGame() {
-    const resetBtn = document.querySelector('.reset-game')
-    resetBtn.addEventListener('click', () => {
-      Array.from(document.querySelectorAll('.game-square')).forEach((item) => item.classList.remove('played-x', 'played-o'))
-    })
-  }
+  // function resetTheGame() {
+  //   const resetBtn = document.querySelector('.reset-game')
+  //   resetBtn.addEventListener('click', () => {
+  //     Array.from(document.querySelectorAll('.game-square')).forEach((item) => item.classList.remove('played-x', 'played-o'))
+  //     gameFlow.movesCounter = 0
+  //     console.log(gameFlow.movesCounter)
+  //   })
+  // }
 
-  const gameReset = resetTheGame()
+  // const gameReset = resetTheGame()
   const initDomElements = createDomElements(gameGrid)
   // const handleInputs = handlePlayerInputs(gameGrid)
   return {
     initDomElements,
     gameGrid,
-    gameReset
+    // gameReset
     // handleInputs
   }
 })();
@@ -81,16 +83,30 @@ function gameFlow(player1, player2) {
           movesCounter = 0
         }
       })
-    });
+    })
   }
 
+  const resetTheGame = () => {
+    const resetBtn = document.querySelector('.reset-game')
+    resetBtn.addEventListener('click', () => {
+      Array.from(document.querySelectorAll('.game-square')).forEach((item) => item.classList.remove('played-x', 'played-o'))
+      movesCounter = 0
+    })
+  }
+
+  const resetGame = resetTheGame()
   const flow = updateGameBoard()
   const lggs = logging()
   const playerStuff = getPlayerStuff()
   const getName =  getPlayerName()
 
   return {
-      playerStuff, lggs, getName, flow
+      playerStuff, 
+      lggs, 
+      getName, 
+      flow, 
+      movesCounter, 
+      resetGame
   }
 }
 
@@ -104,7 +120,9 @@ function playerFactory(name) {
   const multiply = (a, b) => a * b
   
   return {
-    playerName, add, multiply
+    playerName, 
+    add, 
+    multiply
   }
 }
 
@@ -113,3 +131,5 @@ const player2 = playerFactory('Mike')
 
 const startBtn = document.querySelector('.start-game')
 startBtn.addEventListener('click', gameFlow(player1, player2).flow)
+const resetBtn = document.querySelector('.reset-game')
+resetBtn.addEventListener('click', gameFlow(player1, player2).resetGame)
