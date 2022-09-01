@@ -49,6 +49,22 @@ const GameBoard = (function() {
   }
 })();
 
+function gameFlow(player1) {
+  const getPlayerStuff = () => {
+      console.log(player1.add(2, 15))
+      console.log(player1.playerName)
+      console.log(player1.multiply(5,6))
+  }
+  const logging = () => { console.log('testing functionality')
+  }
+
+  const lggs = logging()
+  const playerStuff = getPlayerStuff()
+  return {
+      playerStuff, lggs
+  }
+}
+
 /* Factory function for player creation */
 
 function playerFactory(name) {
@@ -63,5 +79,5 @@ function playerFactory(name) {
   }
 }
 
-const player1 = playerFactory('Player 1')
+const player1 = playerFactory('player 1')
 const player2 = playerFactory('Player 2')
