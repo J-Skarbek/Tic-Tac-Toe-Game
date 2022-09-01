@@ -20,9 +20,6 @@ const GameBoard = (function() {
       const gameSquare = document.createElement('div')
       gameContainer.appendChild(gameSquare)
       gameSquare.classList.add(`game-square-${tileCounter}`, 'game-square')
-      gameSquare.addEventListener('click', () => {
-        gameSquare.classList.add('played-o')
-      })
       console.log(tileCounter)
       tileCounter++
     })
@@ -50,11 +47,14 @@ const GameBoard = (function() {
 })();
 
 function gameFlow(player1, player2) {
+  let movesCounter = 0
+
   const getPlayerStuff = () => {
       console.log(player1.add(2, 15))
       console.log(player1.playerName)
       console.log(player1.multiply(5,6))
       console.log(player2.playerName)
+
   }
 
   const logging = () => { console.log('testing functionality')
@@ -64,33 +64,33 @@ function gameFlow(player1, player2) {
     return player1.playerName
   }
 
+  const updateGameBoard = () => {
+    const gameSquares =  Array.from(document.querySelectorAll('.game-square'))
+    gameSquares.forEach(square => {
+      square.addEventListener('click', () => {
+        if (movesCounter <= 8) {
+          if (movesCounter % 2 === 0) {
+            square.classList.add('played-x')
+            ++movesCounter
+          } else {
+            square.classList.add('played-o')
+            ++movesCounter
+          }
+        } else {
+          alert(`The count is already at ${movesCounter} and the game is over.`)
+          movesCounter = 0
+        }
+      })
+    });
+  }
+
+  const flow = updateGameBoard()
   const lggs = logging()
   const playerStuff = getPlayerStuff()
   const getName =  getPlayerName()
 
-  // let movesCounter = 0
-
-  // gameSquare.addEventListener('click', () => {
-  //   const getCount = movesCounter <= 8 ? movesCounter++ : alert('the game is over')
-  //   return getCount
-  // })
-
-  // if (movesCounter <= 8) {
-  //   movesCounter++
-  // } else {
-  //   alert(`The count is already at ${movesCounter} and the game is over.`)
-  //   movesCounter = 0
-  // }
-
-
-  // if (movesCounter % 2 === 0) {
-  //   gameSquare.classList.add('played-x')
-  // } else {
-  //   gameSquare.classList.add('played-0')
-  // }
-
   return {
-      playerStuff, lggs, getName
+      playerStuff, lggs, getName, flow
   }
 }
 
@@ -110,3 +110,6 @@ function playerFactory(name) {
 
 const player1 = playerFactory('John')
 const player2 = playerFactory('Mike')
+
+const startBtn = document.querySelector('.start-game')
+startBtn.addEventListener('click', gameFlow(player1, player2).flow)
