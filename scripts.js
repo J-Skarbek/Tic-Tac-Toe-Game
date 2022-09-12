@@ -28,15 +28,6 @@ const GameBoard = (function() {
 
   }
 
-  // function resetTheGame() {
-  //   const resetBtn = document.querySelector('.reset-game')
-  //   resetBtn.addEventListener('click', () => {
-  //     Array.from(document.querySelectorAll('.game-square')).forEach((item) => item.classList.remove('played-x', 'played-o'))
-  //     gameFlow.movesCounter = 0
-  //     console.log(gameFlow.movesCounter)
-  //   })
-  // }
-
   // const gameReset = resetTheGame()
   const initDomElements = createDomElements(gameGrid)
   // const handleInputs = handlePlayerInputs(gameGrid)
@@ -70,17 +61,21 @@ function gameFlow(player1, player2) {
     const gameSquares =  Array.from(document.querySelectorAll('.game-square'))
     gameSquares.forEach(square => {
       square.addEventListener('click', () => {
-        if (movesCounter <= 8) {
-          if (movesCounter % 2 === 0) {
-            square.classList.add('played-x')
-            ++movesCounter
-          } else {
-            square.classList.add('played-o')
-            ++movesCounter
-          }
+        if (square.classList.contains("played-x", "played-o")) {
+          console.log("you cannoot play on a square that is currently occupied!")
         } else {
-          alert(`The count is already at ${movesCounter} and the game is over.`)
-          movesCounter = 0
+          if (movesCounter <= 8) {
+            if (movesCounter % 2 === 0) {
+              square.classList.add('played-x')
+              ++movesCounter
+            } else {
+              square.classList.add('played-o')
+              ++movesCounter
+            }
+          } else {
+            alert(`The count is already at ${movesCounter} and the game is over.`)
+            movesCounter = 0
+          }
         }
       })
     })
