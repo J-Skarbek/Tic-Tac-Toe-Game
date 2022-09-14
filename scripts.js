@@ -12,6 +12,7 @@ const GameBoard = (function() {
   '3B',
   '3C',
   ]
+
   let tileCounter = 0 
   const gameContainer = document.querySelector('.game-container')
 
@@ -23,8 +24,9 @@ const GameBoard = (function() {
       gameSquare.dataset.squareValue = `${square}`
       tileCounter++
     })
-    // console.table(gameGrid)
-    // console.log(typeof gameGrid)
+    console.table(gameGrid)
+    console.log(typeof gameGrid)
+    console.log(`The tile counter is ${tileCounter}`)
   }
 
   const initDomElements = createDomElements(gameGrid)
@@ -37,6 +39,7 @@ const GameBoard = (function() {
 
 function gameFlow(player1, player2) {
   let movesCounter = 0
+  const gameSquares = Array.from(document.querySelectorAll('.game-square'))
 
   const getPlayerStuff = () => {
       console.log(player1.add(2, 15))
@@ -55,7 +58,6 @@ function gameFlow(player1, player2) {
   }
 
   const updateGameBoard = () => {
-    const gameSquares = Array.from(document.querySelectorAll('.game-square'))
     gameSquares.forEach(square => {
       square.addEventListener('click', () => {
         if (movesCounter <= 8) {
@@ -63,14 +65,41 @@ function gameFlow(player1, player2) {
             square.classList.add('played-x')
             ++movesCounter
             console.log(`The odd moves counter is set to ${movesCounter}.`)
+            checkForWinner()
           } else {
             square.classList.add('played-o')
             ++movesCounter
             console.log(`The even moves counter is set to ${movesCounter}.`)
+            checkForWinner()
           }
         }
       }, { once: true })
     })
+  }
+
+  function checkForWinner() {
+    let xSquares = 0
+    let oSquares = 0 
+    const xPlayedSquares = []
+    const oPlayedSquares = []
+    gameSquares.forEach(square => {
+      if (square.classList.contains('played-x')) {
+        xSquares++
+        xPlayedSquares.push(square.dataset.squareValue)
+        console.log(square.dataset.squareValue)
+        console.log(xSquares)
+        console.table(xPlayedSquares)
+      } else if (square.classList.contains('played-o')) {
+        oSquares++
+        oPlayedSquares.push(square.dataset.squareValue)
+        console.log(oSquares)
+        console.table(oPlayedSquares)
+      }
+    })
+
+    if (xSquares >= 3 || oSquares >= 3) {
+      console.log(`We're ready to test. xSquares is ${xSquares} and oSquares is ${oSquares}.`)
+    }
   }
 
   const resetTheGame = () => {
