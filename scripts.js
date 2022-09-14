@@ -47,6 +47,7 @@ function gameFlow(player1, player2) {
       console.log(player1.playerName)
       console.log(player1.multiply(5,6))
       console.log(player2.playerName)
+      console.log(`The moves counter is set to ${movesCounter}.`)
 
   }
 
@@ -58,26 +59,21 @@ function gameFlow(player1, player2) {
   }
 
   const updateGameBoard = () => {
-    const gameSquares =  Array.from(document.querySelectorAll('.game-square'))
+    const gameSquares = Array.from(document.querySelectorAll('.game-square'))
     gameSquares.forEach(square => {
       square.addEventListener('click', () => {
-        if (square.classList.contains("played-x", "played-o")) {
-          console.log("you cannoot play on a square that is currently occupied!")
-        } else {
-          if (movesCounter <= 8) {
-            if (movesCounter % 2 === 0) {
-              square.classList.add('played-x')
-              ++movesCounter
-            } else {
-              square.classList.add('played-o')
-              ++movesCounter
-            }
+        if (movesCounter <= 8) {
+          if (movesCounter % 2 === 0) {
+            square.classList.add('played-x')
+            ++movesCounter
+            console.log(`The odd moves counter is set to ${movesCounter}.`)
           } else {
-            alert(`The count is already at ${movesCounter} and the game is over.`)
-            movesCounter = 0
+            square.classList.add('played-o')
+            ++movesCounter
+            console.log(`The even moves counter is set to ${movesCounter}.`)
           }
         }
-      })
+      }, { once: true })
     })
   }
 
@@ -85,6 +81,7 @@ function gameFlow(player1, player2) {
     const resetBtn = document.querySelector('.reset-game')
     resetBtn.addEventListener('click', () => {
       Array.from(document.querySelectorAll('.game-square')).forEach((item) => item.classList.remove('played-x', 'played-o'))
+      updateGameBoard()
       movesCounter = 0
     })
   }
