@@ -99,6 +99,22 @@ function gameFlow(player1, player2) {
 
     if (xSquares >= 3 || oSquares >= 3) {
       console.log(`We're ready to test. xSquares is ${xSquares} and oSquares is ${oSquares}.`)
+        let val1 = "1A"
+        let val2 = "2A"
+        let val3 = "3A"
+        // let testConditions = xPlayedSquares.includes(val2)
+        // console.log(testConditions)
+        if (xPlayedSquares.includes(val1) && xPlayedSquares.includes(val2) && xPlayedSquares.includes(val3)) {
+          console.log('X is the winner!')
+        } else {
+          console.log('X has not won in this test.')
+        }
+      // xPlayedSquares.forEach(square => {
+      //   let val1 = "1A"
+      //   let val2 = "2A"
+      //   let val3 = "3A"
+      //   if square
+      // })
     }
   }
 
