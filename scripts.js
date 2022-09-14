@@ -20,22 +20,18 @@ const GameBoard = (function() {
       const gameSquare = document.createElement('div')
       gameContainer.appendChild(gameSquare)
       gameSquare.classList.add(`game-square-${tileCounter}`, 'game-square')
-      console.log(tileCounter)
+      gameSquare.dataset.squareValue = `${square}`
       tileCounter++
     })
-    console.table(gameGrid)
-    console.log(typeof gameGrid)
-
+    // console.table(gameGrid)
+    // console.log(typeof gameGrid)
   }
 
-  // const gameReset = resetTheGame()
   const initDomElements = createDomElements(gameGrid)
-  // const handleInputs = handlePlayerInputs(gameGrid)
+
   return {
     initDomElements,
-    gameGrid,
-    // gameReset
-    // handleInputs
+    gameGrid
   }
 })();
 
