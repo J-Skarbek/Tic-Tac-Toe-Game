@@ -25,6 +25,7 @@ footer, header, hgroup, menu, nav, section {
 }
 body {
     line-height: 1;
+    letter-spacing: 1px;;
     font-family: 'Poppins', sans-serif;
     display: grid;
     grid-template-columns: repeat(12, minmax(100px, 1fr));
@@ -60,12 +61,14 @@ table {
 
 h1 {
     font-weight: 900;
+    font-size: 2rem;
 }
 
 h2,
 h3,
 h4 { 
     font-weight: 800;
+    font-size: 1.5rem;
 }
 
 h5,
@@ -83,11 +86,29 @@ link {
 .header {
     grid-column: 3 / span 10;
     grid-row: 1 / span 2;
+    padding: 25px;
+}
+
+.header h1,
+.header h2,
+.header-buttons {
+    margin-bottom: 10px;
 }
 
 .sidebar {
     grid-column: 1 / span 2;
     grid-row: 1 / span 12;
+    background-color: var(--extra-lt-blue);
+    border-right: 5px solid var(--light-blue);
+    padding: 25px;
+}
+
+.sidebar p {
+    margin: 10px 0;
+}
+
+.sidebar-buttons {
+    margin-top: 10px;
 }
 
 .page-body {
@@ -102,10 +123,13 @@ link {
 .footer {
     grid-column: 3 / span 10;
     grid-row: 11 / span 2;
+    background-color: var(--offwhite);
+    padding: 25px;
+    border-top: 5px solid var(--extra-lt-blue);
 }
 
 .game-container {
-    grid-column: 1 / span 4;
+    grid-column: 2 / span 4;
     grid-row: 1 / span 4;
     background-color: var(--extra-lt-blue);
     display: grid;
@@ -117,6 +141,16 @@ link {
     border: 5px var(--purp-blue) solid;
     background-repeat: no-repeat;
     background-position: center;
+}
+
+.messaging {
+    grid-column: 2 / span 4;
+    grid-row: 5 / span 2;
+}
+
+p.message-text  {
+    font-size: 1.2rem;
+    font-weight: 500;
 }
 
 /*temp CSS to add gamemarkers to board and add style*/
@@ -132,14 +166,6 @@ link {
 .game-container .played-o {
     background-image: url("./images/new-o.svg")
 }
-
-/* .game-container div:nth-child(odd) {
-    background-image: url("./images/new-xx.svg")
-}
-
-.game-container div:nth-child(even) {
-    background-image: url("./images/new-o.svg")
-} */
 
 img.game-element {
     height: 75px;
