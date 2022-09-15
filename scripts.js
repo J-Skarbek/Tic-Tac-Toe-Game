@@ -82,6 +82,7 @@ function gameFlow(player1, player2) {
     let oSquares = 0 
     const xPlayedSquares = []
     const oPlayedSquares = []
+    const messagingBox = document.querySelector('.message-text')
     gameSquares.forEach(square => {
       if (square.classList.contains('played-x')) {
         xSquares++
@@ -108,8 +109,7 @@ function gameFlow(player1, player2) {
         const val7 = "1C"
         const val8 = "2C"
         const val9 = "3C"
-        // let testConditions = xPlayedSquares.includes(val2)
-        // console.log(testConditions)
+
         if ((xPlayedSquares.includes(val1) && xPlayedSquares.includes(val2) && xPlayedSquares.includes(val3)) || 
             (xPlayedSquares.includes(val4) && xPlayedSquares.includes(val5) && xPlayedSquares.includes(val6)) ||
             (xPlayedSquares.includes(val7) && xPlayedSquares.includes(val8) && xPlayedSquares.includes(val9)) ||
@@ -117,17 +117,13 @@ function gameFlow(player1, player2) {
             (xPlayedSquares.includes(val3) && xPlayedSquares.includes(val5) && xPlayedSquares.includes(val7)) ||
             (xPlayedSquares.includes(val1) && xPlayedSquares.includes(val4) && xPlayedSquares.includes(val7)) ||
             (xPlayedSquares.includes(val2) && xPlayedSquares.includes(val5) && xPlayedSquares.includes(val8)) ||
-            (xPlayedSquares.includes(val3) && xPlayedSquares.includes(val6) && xPlayedSquares.includes(val9)) ) {
+            (xPlayedSquares.includes(val3) && xPlayedSquares.includes(val6) && xPlayedSquares.includes(val9))) {
+          messagingBox.textContent = 'X is the Winner!'
           console.log('X is the winner!')
         } else {
+          messagingBox.textContent = 'X is NOT the Winner!'
           console.log('X has not won in this test.')
         };
-      // xPlayedSquares.forEach(square => {
-      //   let val1 = "1A"
-      //   let val2 = "2A"
-      //   let val3 = "3A"
-      //   if square
-      // })
     }
   }
 
