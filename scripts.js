@@ -118,11 +118,18 @@ function gameFlow(player1, player2) {
             (xPlayedSquares.includes(val1) && xPlayedSquares.includes(val4) && xPlayedSquares.includes(val7)) ||
             (xPlayedSquares.includes(val2) && xPlayedSquares.includes(val5) && xPlayedSquares.includes(val8)) ||
             (xPlayedSquares.includes(val3) && xPlayedSquares.includes(val6) && xPlayedSquares.includes(val9))) {
-          messagingBox.textContent = 'X is the Winner!'
-          console.log('X is the winner!')
+          messagingBox.textContent = 'X is the Winner!'   
+        } else if ((oPlayedSquares.includes(val1) && oPlayedSquares.includes(val2) && oPlayedSquares.includes(val3)) || 
+            (oPlayedSquares.includes(val4) && oPlayedSquares.includes(val5) && oPlayedSquares.includes(val6)) ||
+            (oPlayedSquares.includes(val7) && oPlayedSquares.includes(val8) && oPlayedSquares.includes(val9)) ||
+            (oPlayedSquares.includes(val1) && oPlayedSquares.includes(val5) && oPlayedSquares.includes(val9)) ||
+            (oPlayedSquares.includes(val3) && oPlayedSquares.includes(val5) && oPlayedSquares.includes(val7)) ||
+            (oPlayedSquares.includes(val1) && oPlayedSquares.includes(val4) && oPlayedSquares.includes(val7)) ||
+            (oPlayedSquares.includes(val2) && oPlayedSquares.includes(val5) && oPlayedSquares.includes(val8)) ||
+            (oPlayedSquares.includes(val3) && oPlayedSquares.includes(val6) && oPlayedSquares.includes(val9))) {
+          messagingBox.textContent = 'X is NOT the Winner! O has won the game!'
         } else {
-          messagingBox.textContent = 'X is NOT the Winner!'
-          console.log('X has not won in this test.')
+          messagingBox.textContent = 'Tied Game -- please play again!'
         };
     }
   }
