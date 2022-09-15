@@ -99,16 +99,29 @@ function gameFlow(player1, player2) {
 
     if (xSquares >= 3 || oSquares >= 3) {
       console.log(`We're ready to test. xSquares is ${xSquares} and oSquares is ${oSquares}.`)
-        let val1 = "1A"
-        let val2 = "2A"
-        let val3 = "3A"
+        const val1 = "1A"
+        const val2 = "2A"
+        const val3 = "3A"
+        const val4 = "1B"
+        const val5 = "2B"
+        const val6 = "3B"
+        const val7 = "1C"
+        const val8 = "2C"
+        const val9 = "3C"
         // let testConditions = xPlayedSquares.includes(val2)
         // console.log(testConditions)
-        if (xPlayedSquares.includes(val1) && xPlayedSquares.includes(val2) && xPlayedSquares.includes(val3)) {
+        if ((xPlayedSquares.includes(val1) && xPlayedSquares.includes(val2) && xPlayedSquares.includes(val3)) || 
+            (xPlayedSquares.includes(val4) && xPlayedSquares.includes(val5) && xPlayedSquares.includes(val6)) ||
+            (xPlayedSquares.includes(val7) && xPlayedSquares.includes(val8) && xPlayedSquares.includes(val9)) ||
+            (xPlayedSquares.includes(val1) && xPlayedSquares.includes(val5) && xPlayedSquares.includes(val9)) ||
+            (xPlayedSquares.includes(val3) && xPlayedSquares.includes(val5) && xPlayedSquares.includes(val7)) ||
+            (xPlayedSquares.includes(val1) && xPlayedSquares.includes(val4) && xPlayedSquares.includes(val7)) ||
+            (xPlayedSquares.includes(val2) && xPlayedSquares.includes(val5) && xPlayedSquares.includes(val8)) ||
+            (xPlayedSquares.includes(val3) && xPlayedSquares.includes(val6) && xPlayedSquares.includes(val9)) ) {
           console.log('X is the winner!')
         } else {
           console.log('X has not won in this test.')
-        }
+        };
       // xPlayedSquares.forEach(square => {
       //   let val1 = "1A"
       //   let val2 = "2A"
