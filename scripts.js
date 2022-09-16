@@ -40,7 +40,7 @@ const GameBoard = (function() {
 function gameFlow(player1, player2) {
   let movesCounter = 0
   const gameSquares = Array.from(document.querySelectorAll('.game-square'))
-
+    
   const getPlayerStuff = () => {
       console.log(player1.add(2, 15))
       console.log(player1.playerName)
@@ -64,12 +64,10 @@ function gameFlow(player1, player2) {
           if (movesCounter % 2 === 0) {
             square.classList.add('played-x')
             ++movesCounter
-            console.log(`The odd moves counter is set to ${movesCounter}.`)
             checkForWinner()
           } else {
             square.classList.add('played-o')
             ++movesCounter
-            console.log(`The even moves counter is set to ${movesCounter}.`)
             checkForWinner()
           }
         }
@@ -78,59 +76,55 @@ function gameFlow(player1, player2) {
   }
 
   function checkForWinner() {
-    let xSquares = 0
-    let oSquares = 0 
     const xPlayedSquares = []
     const oPlayedSquares = []
+    const val1 = "1A"
+    const val2 = "2A"
+    const val3 = "3A"
+    const val4 = "1B"
+    const val5 = "2B"
+    const val6 = "3B"
+    const val7 = "1C"
+    const val8 = "2C"
+    const val9 = "3C"
+    let xSquares = 0
+    let oSquares = 0
+    let xWins = false
+    let oWins = false 
+
     const messagingBox = document.querySelector('.message-text')
     gameSquares.forEach(square => {
       if (square.classList.contains('played-x')) {
         xSquares++
         xPlayedSquares.push(square.dataset.squareValue)
-        console.log(square.dataset.squareValue)
-        console.log(xSquares)
-        console.table(xPlayedSquares)
       } else if (square.classList.contains('played-o')) {
         oSquares++
         oPlayedSquares.push(square.dataset.squareValue)
-        console.log(oSquares)
-        console.table(oPlayedSquares)
       }
     })
 
     if (xSquares >= 3 || oSquares >= 3) {
-      console.log(`We're ready to test. xSquares is ${xSquares} and oSquares is ${oSquares}.`)
-        const val1 = "1A"
-        const val2 = "2A"
-        const val3 = "3A"
-        const val4 = "1B"
-        const val5 = "2B"
-        const val6 = "3B"
-        const val7 = "1C"
-        const val8 = "2C"
-        const val9 = "3C"
-
-        if ((xPlayedSquares.includes(val1) && xPlayedSquares.includes(val2) && xPlayedSquares.includes(val3)) || 
-            (xPlayedSquares.includes(val4) && xPlayedSquares.includes(val5) && xPlayedSquares.includes(val6)) ||
-            (xPlayedSquares.includes(val7) && xPlayedSquares.includes(val8) && xPlayedSquares.includes(val9)) ||
-            (xPlayedSquares.includes(val1) && xPlayedSquares.includes(val5) && xPlayedSquares.includes(val9)) ||
-            (xPlayedSquares.includes(val3) && xPlayedSquares.includes(val5) && xPlayedSquares.includes(val7)) ||
-            (xPlayedSquares.includes(val1) && xPlayedSquares.includes(val4) && xPlayedSquares.includes(val7)) ||
-            (xPlayedSquares.includes(val2) && xPlayedSquares.includes(val5) && xPlayedSquares.includes(val8)) ||
-            (xPlayedSquares.includes(val3) && xPlayedSquares.includes(val6) && xPlayedSquares.includes(val9))) {
-          messagingBox.textContent = 'X is the Winner!'   
-        } else if ((oPlayedSquares.includes(val1) && oPlayedSquares.includes(val2) && oPlayedSquares.includes(val3)) || 
-            (oPlayedSquares.includes(val4) && oPlayedSquares.includes(val5) && oPlayedSquares.includes(val6)) ||
-            (oPlayedSquares.includes(val7) && oPlayedSquares.includes(val8) && oPlayedSquares.includes(val9)) ||
-            (oPlayedSquares.includes(val1) && oPlayedSquares.includes(val5) && oPlayedSquares.includes(val9)) ||
-            (oPlayedSquares.includes(val3) && oPlayedSquares.includes(val5) && oPlayedSquares.includes(val7)) ||
-            (oPlayedSquares.includes(val1) && oPlayedSquares.includes(val4) && oPlayedSquares.includes(val7)) ||
-            (oPlayedSquares.includes(val2) && oPlayedSquares.includes(val5) && oPlayedSquares.includes(val8)) ||
-            (oPlayedSquares.includes(val3) && oPlayedSquares.includes(val6) && oPlayedSquares.includes(val9))) {
-          messagingBox.textContent = 'X is NOT the Winner! O has won the game!'
-        } else {
-          messagingBox.textContent = 'Tied Game -- please play again!'
-        };
+      if ((xPlayedSquares.includes(val1) && xPlayedSquares.includes(val2) && xPlayedSquares.includes(val3)) || 
+          (xPlayedSquares.includes(val4) && xPlayedSquares.includes(val5) && xPlayedSquares.includes(val6)) ||
+          (xPlayedSquares.includes(val7) && xPlayedSquares.includes(val8) && xPlayedSquares.includes(val9)) ||
+          (xPlayedSquares.includes(val1) && xPlayedSquares.includes(val5) && xPlayedSquares.includes(val9)) ||
+          (xPlayedSquares.includes(val3) && xPlayedSquares.includes(val5) && xPlayedSquares.includes(val7)) ||
+          (xPlayedSquares.includes(val1) && xPlayedSquares.includes(val4) && xPlayedSquares.includes(val7)) ||
+          (xPlayedSquares.includes(val2) && xPlayedSquares.includes(val5) && xPlayedSquares.includes(val8)) ||
+          (xPlayedSquares.includes(val3) && xPlayedSquares.includes(val6) && xPlayedSquares.includes(val9))) {
+        messagingBox.textContent = 'X is the Winner!'
+        xWins = true
+      } else if ((oPlayedSquares.includes(val1) && oPlayedSquares.includes(val2) && oPlayedSquares.includes(val3)) || 
+          (oPlayedSquares.includes(val4) && oPlayedSquares.includes(val5) && oPlayedSquares.includes(val6)) ||
+          (oPlayedSquares.includes(val7) && oPlayedSquares.includes(val8) && oPlayedSquares.includes(val9)) ||
+          (oPlayedSquares.includes(val1) && oPlayedSquares.includes(val5) && oPlayedSquares.includes(val9)) ||
+          (oPlayedSquares.includes(val3) && oPlayedSquares.includes(val5) && oPlayedSquares.includes(val7)) ||
+          (oPlayedSquares.includes(val1) && oPlayedSquares.includes(val4) && oPlayedSquares.includes(val7)) ||
+          (oPlayedSquares.includes(val2) && oPlayedSquares.includes(val5) && oPlayedSquares.includes(val8)) ||
+          (oPlayedSquares.includes(val3) && oPlayedSquares.includes(val6) && oPlayedSquares.includes(val9))) {
+        messagingBox.textContent = 'O has won the game!'
+        oWins = true
+      }
     }
   }
 
